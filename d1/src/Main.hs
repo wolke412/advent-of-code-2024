@@ -19,10 +19,8 @@ file2 = "../static/input_2.txt"
 readInputLines :: FilePath -> IO [String]
 readInputLines path = do
     content <- readFile path
-    
-    let n_lines = lines content
-
     return (lines content) 
+
 
 split :: [String] -> [( String, String )]
 split s = [ ( x, y ) | [x, y] <- map words s ]
