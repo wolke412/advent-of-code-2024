@@ -5,6 +5,9 @@ import System.IO (readFile)
 import Data.List 
 import Text.Read (read, readMaybe)
 
+import qualified Part2 as P2
+import Data.ByteString (count)
+
 --  // 
 
 file1 :: FilePath
@@ -18,7 +21,7 @@ readInputLines path = do
     content <- readFile path
     return (lines content) 
 
-checkList0 :: ([Int]) -> Bool
+checkList0 :: [Int] -> Bool
 checkList0 (h:s:rest)
     | checkDiffs d1 d2 = checkList (s:rest, d2)
     | otherwise = False
@@ -28,7 +31,7 @@ checkList0 (h:s:rest)
 
   
 checkList :: ([Int], Int) -> Bool
-checkList ( h:[], d1 ) = True
+checkList ( [h], d1 ) = True
 checkList ( h:s:rest, d1 ) 
 
     | checkDiffs d1 d2 = checkList (s:rest, d2)
@@ -59,6 +62,19 @@ main = do
     let ifs = map checkList0 r 
 
     print (countTrues ifs)
+    
+
+
+
+
+    let ifs = map P2.checkListStart ( map (\sub -> (sub, 0)) r)
+    -- let t = [ ((r !! 143), 0) ]
+    -- let ifs = map P2.checkListStart r
+    -- print t
+    
+
+    print (countTrues ifs)
+    -- print (trueIndexes ifs)
 
 
     where 
