@@ -7,18 +7,20 @@ diffs :: [Int] -> [Int]
 diffs [_]      = []
 diffs (x:y:xs) = (x - y) : diffs (y:xs)
 
-filterWrongs :: [Int] -> [Int] 
-filterWrongs = filter isWrong
+filterWrongDiffs :: [Int] -> [Int]
+filterWrongDiffs = filter isWrongDiff
 
-countWrongs :: [Int] -> Int
-countWrongs = length . filterWrongs
+countWrongDiffs :: [Int] -> Int
+countWrongDiffs = length . filterWrongDiffs
 
-isWrong :: Int -> Bool
-isWrong x = abs x > 3 || x == 0 
+isWrongDiff :: Int -> Bool
+isWrongDiff x = abs x > 3 || x == 0 
 
+-- Check wether list has wonrg digits or alternating
+-- polarity
 hasWrongs :: [Int] -> Bool
 hasWrongs l 
-    | countWrongs l > 0                = True
+    | countWrongDiffs l > 0            = True
     | countPos l > 0 && countNeg l > 0 = True
     | otherwise                        = False
 
@@ -31,7 +33,7 @@ countPos l = length ( filter (>0) l)
 dropIndex :: [Int] -> Int -> [Int]
 dropIndex arr i = 
     case r of 
-        [] -> l
+        []    -> l
         (_:x) -> l ++ x
   where 
     ( l, r ) = splitAt i arr
@@ -48,11 +50,12 @@ check l i max
         f = dropIndex l i
         d = diffs f
 
+-- yea
 checkListStart :: ([Int], Int) -> Bool
 checkListStart (list, err)
-    -- trace (": " ++ show ( checkDropping list ) )
+
     | not (hasWrongs d) = True
-    | otherwise          = checkDropping list 
+    | otherwise         = checkDropping list 
 
     where 
         d = diffs list
