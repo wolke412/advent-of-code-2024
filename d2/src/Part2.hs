@@ -43,9 +43,9 @@ checkDropping l = check l 0 (length l)
 
 check :: [Int] -> Int -> Int -> Bool    
 check l i max
-    | i == max           = False
+    | i == max            = False
     | not ( hasWrongs d ) = True
-    | otherwise          = check l (i + 1) max
+    | otherwise           = check l (i + 1) max
     where 
         f = dropIndex l i
         d = diffs f

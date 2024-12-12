@@ -6,6 +6,11 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+TYPE="hs"
+if [ -z "$2" ]; then
+    TYPE="$2"
+fi
+
 # Get the folder name from the first parameter
 FOLDER_NAME="$1"
 
@@ -24,10 +29,10 @@ import Text.Read (read)
 --  // 
 
 file1 :: FilePath
-file1 = "../static/input_1.txt"
+file1 = "../assets/input_1.txt"
 
 file2 :: FilePath
-file2 = "../static/input_2.txt"
+file2 = "../assets/input_2.txt"
 
 readInputLines :: FilePath -> IO [String]
 readInputLines path = do

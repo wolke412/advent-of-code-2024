@@ -7,7 +7,6 @@ import Text.Read (read)
 import qualified Data.Map.Strict as Map
 import Data.Map.Strict (Map)
 
-
 --  // 
 
 file1 :: FilePath
@@ -33,7 +32,6 @@ diff l = [ abs (l - r) | (l, r) <- l ]
 
 summation :: [Int] -> Int
 summation = foldr (\acc (cur) -> acc + cur) 0
-
 
 -- Part 2 functions
 
