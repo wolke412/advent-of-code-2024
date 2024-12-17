@@ -34,15 +34,13 @@ file1 = "../assets/input_1.txt"
 file2 :: FilePath
 file2 = "../assets/input_2.txt"
 
-readInputLines :: FilePath -> IO [String]
-readInputLines path = do
-    content <- readFile path
-    return (lines content) 
+input :: FilePath -> IO [String]
+input p = readFile p >>= return . lines
 
 main :: IO ()
 main = do
     putStrLn "Reading input file 1:"
-    flines <- readInputLines file1
+    flines <- input file1
     
     print flines
 EOF
