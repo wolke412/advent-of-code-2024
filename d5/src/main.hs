@@ -1,3 +1,5 @@
+-- THIS WWOULD BE ANOTHER PAIN IN THE ASS WITH HASKELL
+
 module Main where
 
 import System.IO (readFile)
@@ -22,3 +24,4 @@ main = do
     flines <- input file1
     
     print flines
+
